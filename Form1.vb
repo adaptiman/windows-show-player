@@ -40,6 +40,7 @@
 
         Dim mediaPlayer As AxWMPLib.AxWindowsMediaPlayer
         mediaPlayer = New AxWMPLib.AxWindowsMediaPlayer
+        mediaPlayer.CreateControl()
 
         'Set properties
         With mediaPlayer
