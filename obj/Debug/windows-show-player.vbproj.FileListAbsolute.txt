@@ -1,0 +1,16 @@
+D:\code\DotNet\windows-show-player\obj\Debug\windows_show_player.Form1.resources
+D:\code\DotNet\windows-show-player\obj\Debug\windows_show_player.Resources.resources
+D:\code\DotNet\windows-show-player\obj\Debug\windows-show-player.vbproj.GenerateResource.cache
+D:\code\DotNet\windows-show-player\obj\Debug\windows-show-player.vbproj.CoreCompileInputs.cache
+D:\code\DotNet\windows-show-player\obj\Debug\Interop.WMPLib.dll
+D:\code\DotNet\windows-show-player\obj\Debug\windows-show-player.vbproj.ResolveComReference.cache
+D:\code\DotNet\windows-show-player\obj\Debug\AxInterop.WMPLib.dll
+D:\code\DotNet\windows-show-player\bin\Debug\windows-show-player.exe.config
+D:\code\DotNet\windows-show-player\bin\Debug\windows-show-player.exe
+D:\code\DotNet\windows-show-player\bin\Debug\windows-show-player.pdb
+D:\code\DotNet\windows-show-player\bin\Debug\windows-show-player.xml
+D:\code\DotNet\windows-show-player\bin\Debug\Interop.WMPLib.dll
+D:\code\DotNet\windows-show-player\bin\Debug\AxInterop.WMPLib.dll
+D:\code\DotNet\windows-show-player\obj\Debug\windows-show-player.exe
+D:\code\DotNet\windows-show-player\obj\Debug\windows-show-player.xml
+D:\code\DotNet\windows-show-player\obj\Debug\windows-show-player.pdb
