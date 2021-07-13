@@ -31,3 +31,4 @@ C:\Users\d-sweeney\Documents\code\VisualStudio\windows-show-player\obj\Debug\win
 C:\Users\d-sweeney\Documents\code\VisualStudio\windows-show-player\obj\Debug\windows-show-player.exe
 C:\Users\d-sweeney\Documents\code\VisualStudio\windows-show-player\obj\Debug\windows-show-player.xml
 C:\Users\d-sweeney\Documents\code\VisualStudio\windows-show-player\obj\Debug\windows-show-player.pdb
+D:\code\DotNet\windows-show-player\obj\Debug\windows-show-player.vbproj.AssemblyReference.cache

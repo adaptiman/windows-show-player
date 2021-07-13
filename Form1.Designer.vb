@@ -57,7 +57,7 @@ Partial Class Form1
         'CreateAudioCueToolStripMenuItem
         '
         Me.CreateAudioCueToolStripMenuItem.Name = "CreateAudioCueToolStripMenuItem"
-        Me.CreateAudioCueToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.CreateAudioCueToolStripMenuItem.Size = New System.Drawing.Size(337, 44)
         Me.CreateAudioCueToolStripMenuItem.Text = "Create Audio Cue"
         '
         'flpMain
@@ -78,7 +78,7 @@ Partial Class Form1
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "Windows Show Player"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
