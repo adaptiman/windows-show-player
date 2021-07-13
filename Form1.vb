@@ -12,8 +12,9 @@ Public Class Form1
         'Public Variables
         Public title As String
         Public uRL As String
-        Public length As DateTime
+        Public length As String
 
+        'Public Functions
         Public Shared Function GetWAVDuration(ByVal strPathAndFilename As String) As String
 
             REM *** SEE ALSO
@@ -107,6 +108,7 @@ Public Class Form1
 
         End Function
     End Class
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -117,7 +119,12 @@ Public Class Form1
     'Used to give unique control names such as label1, label2, etc.
     Private _MediaPanelsAddedCount As Integer = 0
 
-    Private _CueArray As Array
+    Dim Cues As New Collection
+
+    'add some test data
+    'Cues.Add Cue(
+
+
 
     '*********************Form Setup***********************************
     'Add menu to the form
@@ -257,7 +264,7 @@ Public Class Form1
 
     End Sub
 
-    'Handle play button click requests
+    'Handle delete button click requests
     Public Sub DynamicDeleteButton_Click(ByVal sender As Object, ByVal e As EventArgs)
 
         Dim parentPanelName As String

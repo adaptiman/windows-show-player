@@ -37,7 +37,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(2127, 40)
+        Me.MenuStrip1.Size = New System.Drawing.Size(2127, 42)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -64,9 +64,9 @@ Partial Class Form1
         '
         Me.flpMain.AutoSize = True
         Me.flpMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.flpMain.Location = New System.Drawing.Point(0, 40)
+        Me.flpMain.Location = New System.Drawing.Point(0, 42)
         Me.flpMain.Name = "flpMain"
-        Me.flpMain.Size = New System.Drawing.Size(2127, 1238)
+        Me.flpMain.Size = New System.Drawing.Size(2127, 1236)
         Me.flpMain.TabIndex = 1
         '
         'Form1
