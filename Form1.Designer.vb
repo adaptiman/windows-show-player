@@ -27,6 +27,7 @@ Partial Class Form1
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CreateAudioCueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.flpMain = New System.Windows.Forms.FlowLayoutPanel()
+        Me.ReadPlaylistToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -37,43 +38,50 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(2127, 42)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1581, 40)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReadPlaylistToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(72, 36)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(72, 38)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateAudioCueToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(90, 36)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(90, 38)
         Me.ToolsToolStripMenuItem.Text = "Tools"
         '
         'CreateAudioCueToolStripMenuItem
         '
         Me.CreateAudioCueToolStripMenuItem.Name = "CreateAudioCueToolStripMenuItem"
-        Me.CreateAudioCueToolStripMenuItem.Size = New System.Drawing.Size(337, 44)
+        Me.CreateAudioCueToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
         Me.CreateAudioCueToolStripMenuItem.Text = "Create Audio Cue"
         '
         'flpMain
         '
         Me.flpMain.AutoSize = True
         Me.flpMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.flpMain.Location = New System.Drawing.Point(0, 42)
+        Me.flpMain.Location = New System.Drawing.Point(0, 40)
         Me.flpMain.Name = "flpMain"
-        Me.flpMain.Size = New System.Drawing.Size(2127, 1236)
+        Me.flpMain.Size = New System.Drawing.Size(1581, 936)
         Me.flpMain.TabIndex = 1
+        '
+        'ReadPlaylistToolStripMenuItem
+        '
+        Me.ReadPlaylistToolStripMenuItem.Name = "ReadPlaylistToolStripMenuItem"
+        Me.ReadPlaylistToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.ReadPlaylistToolStripMenuItem.Text = "Read Playlist"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(2127, 1278)
+        Me.ClientSize = New System.Drawing.Size(1581, 976)
         Me.Controls.Add(Me.flpMain)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -91,4 +99,5 @@ Partial Class Form1
     Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CreateAudioCueToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents flpMain As FlowLayoutPanel
+    Friend WithEvents ReadPlaylistToolStripMenuItem As ToolStripMenuItem
 End Class

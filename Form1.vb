@@ -4,114 +4,26 @@
 Imports System.Configuration
 Imports System.ComponentModel
 Imports System.IO
+Imports PlaylistsNET.Content
+Imports PlaylistsNET.Models
 
 Public Class Form1
 
-    Private Class Cue
+    Private Sub Setup_Form()
 
-        'Public Variables
-        Public title As String
-        Public uRL As String
-        Public length As String
 
-        'Public Functions
-        Public Shared Function GetWAVDuration(ByVal strPathAndFilename As String) As String
+        CreateMediaPanel()
+        'CreateMediaPlayer(_CurrentMediaPanelName, "D:\CFP\bumpers\categorical\opening 2010.wav")
 
-            REM *** SEE ALSO
-            REM *** http://soundfile.sapp.org/doc/WaveFormat/
-            REM *** CAUTION
-            REM *** On the WaveFormat web page, the positions of the values
-            REM *** SampleRate and BitsPerSample have been reversed.
-            REM *** https://stackoverflow.com/questions/65588931/determine-wav-duration-time-in-visual-studio-2019/65616287#65616287
-
-            REM *** DEFINE LOCAL VARIABLES
-
-            REM *** Define Visual Basic BYTE Array Types
-            Dim byNumberOfChannels() As Byte
-            Dim bySamplesPerSec() As Byte
-            Dim byBitsPerSample() As Byte
-            Dim bySubChunkToSizeData() As Byte
-
-            Dim nNumberOfChannels As Int16
-            Dim nSamplesPerSec As Int16
-            Dim nBitsPerSample As Int32
-            Dim nSubChunkToSizeData As Int32
-
-            Dim dNumberOfSamples As Double
-            Dim nDurationInMillis As Int32
-
-            Dim strDuration As String
-
-            REM *** INITIALIZE LOCAL VARIABLES
-            byNumberOfChannels = New Byte(2) {}
-            bySamplesPerSec = New Byte(2) {}
-            byBitsPerSample = New Byte(4) {}
-            bySubChunkToSizeData = New Byte(4) {}
-
-            nNumberOfChannels = 0
-            nSamplesPerSec = 0
-            nBitsPerSample = 0L
-            nSubChunkToSizeData = 0L
-
-            dNumberOfSamples = 0.0
-            nDurationInMillis = 0
-
-            strDuration = ""
-
-            REM *** Initialize the return string value
-            GetWAVDuration = ""
-
-            REM ***************************************************************************
-
-            REM *** Open the Input File for READ Operations
-            Using fsFileStream = File.OpenRead(strPathAndFilename)
-
-                REM *** Get the Number of Audio Channels
-                fsFileStream.Seek(22, SeekOrigin.Begin)
-                fsFileStream.Read(byNumberOfChannels, 0, 2)
-
-                REM *** Get the Number of Bits Per Audio Sample
-                fsFileStream.Seek(24, SeekOrigin.Begin)
-                fsFileStream.Read(byBitsPerSample, 0, 4)
-
-                REM *** Get the number of samples taken per second
-                fsFileStream.Seek(34, SeekOrigin.Begin)
-                fsFileStream.Read(bySamplesPerSec, 0, 2)
-
-                REM *** Retrieve the size of the WAV data
-                REM *** payload in the file
-                fsFileStream.Seek(40, SeekOrigin.Begin)
-                fsFileStream.Read(bySubChunkToSizeData, 0, 4)
-
-            End Using
-
-            REM *** Convert Values from their BYTE representation
-
-            nNumberOfChannels = BitConverter.ToInt16(byNumberOfChannels, 0)
-            nBitsPerSample = BitConverter.ToInt32(byBitsPerSample, 0)
-            nSamplesPerSec = BitConverter.ToInt16(bySamplesPerSec, 0)
-            nSubChunkToSizeData = BitConverter.ToInt32(bySubChunkToSizeData, 0)
-
-            REM *** Compute the Duration of the WAV File
-            REM *** Derives the duration in milliseconds
-
-            REM *** Determine the number of Sound Samples 
-            dNumberOfSamples = (nSubChunkToSizeData * 8) / (nNumberOfChannels * nBitsPerSample)
-            nDurationInMillis = Convert.ToInt32(1000 * Convert.ToSingle(dNumberOfSamples) / Convert.ToSingle(nSamplesPerSec))
-
-            REM *** Convert the time in Milliseconds to a string format
-            REM *** represented by "hh:mm:ss"
-            strDuration = ConvertMillisToTimeString(nDurationInMillis)
-
-            REM *** POST METHOD RETURNS
-            GetWAVDuration = strDuration
-
-        End Function
-    End Class
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CreatePlayButton(_CurrentMediaPanelName)
+        CreateDeleteButton(_CurrentMediaPanelName)
 
     End Sub
+
+
+    'content and playlist are objects that hold all of the playlist data
+    Private _content As New WplContent
+    Private _playlist As New WplPlaylist
 
     'Indicates current media panel to add controls to
     Private _CurrentMediaPanelName As String = Nothing
@@ -119,10 +31,26 @@ Public Class Form1
     'Used to give unique control names such as label1, label2, etc.
     Private _MediaPanelsAddedCount As Integer = 0
 
-    Dim Cues As New Collection
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    'add some test data
-    'Cues.Add Cue(
+        'stream is used to access the file
+        Dim stream As New FileStream("PlayList.wpl", FileMode.Open, FileAccess.Read)
+        'Dim myStreamWriter As New StreamWriter(stream)
+
+        'loads the wpl content into the playlist
+        playlist = content.GetFromStream(stream)
+
+        'loads the paths from playlist
+        'paths = playlist.GetTracksPaths()
+
+        stream.Close()
+        Me.Show()
+
+
+
+    End Sub
+
+    'read the wpl file
 
 
 
@@ -290,6 +218,9 @@ Public Class Form1
 
     End Sub
 
+    Private Sub ReadPlaylistToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReadPlaylistToolStripMenuItem.Click
+        GetFromStream_ReadPlaylistAndCompareWithObject_Equal()
+    End Sub
 End Class
 
 'Application settings wrapper class. This class defines the settings we intend to use in our application.
