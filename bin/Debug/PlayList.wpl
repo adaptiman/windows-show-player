@@ -1,0 +1,16 @@
+<?wpl version="1.0"?>
+<smil>
+  <head>
+    <author>David Sweeney</author>
+    <title>PlayListLocal</title>
+  </head>
+  <body>
+    <seq>
+      <media src="C:\Users\David Sweeney\source\repos\windows-show-player\bin\Debug\sounds\Ring01.wav" trackTitle="Ring 1" />
+      <media src="C:\Users\David Sweeney\source\repos\windows-show-player\bin\Debug\sounds\Ring02.wav" trackTitle="Ring 2" />
+      <media src="C:\Users\David Sweeney\source\repos\windows-show-player\bin\Debug\sounds\Ring03.wav" trackTitle="Ring 3" />
+      <media src="C:\Users\David Sweeney\source\repos\windows-show-player\bin\Debug\sounds\Ring04.wav" trackTitle="Ring 4" />
+      <media src="C:\Users\David Sweeney\source\repos\windows-show-player\bin\Debug\sounds\Ring05.wav" trackTitle="Ring 5" />
+    </seq>
+  </body>
+</smil>

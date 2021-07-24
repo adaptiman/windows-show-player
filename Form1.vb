@@ -9,14 +9,14 @@ Imports PlaylistsNET.Models
 
 Public Class Form1
 
-    Private Sub Setup_Form()
+    Private Sub Create_Cue()
 
 
         CreateMediaPanel()
         'CreateMediaPlayer(_CurrentMediaPanelName, "D:\CFP\bumpers\categorical\opening 2010.wav")
 
-        CreatePlayButton(_CurrentMediaPanelName)
-        CreateDeleteButton(_CurrentMediaPanelName)
+        CreatePlayButton(_currentMediaPanelName)
+        CreateDeleteButton(_currentMediaPanelName)
 
     End Sub
 
@@ -25,11 +25,14 @@ Public Class Form1
     Private _content As New WplContent
     Private _playlist As New WplPlaylist
 
+    'paths stores all of the file paths to play
+    Private _paths As New List(Of String)
+
     'Indicates current media panel to add controls to
-    Private _CurrentMediaPanelName As String = Nothing
+    Private _currentMediaPanelName As String = Nothing
 
     'Used to give unique control names such as label1, label2, etc.
-    Private _MediaPanelsAddedCount As Integer = 0
+    Private _mediaPanelsAddedCount As Integer = 0
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -38,10 +41,21 @@ Public Class Form1
         'Dim myStreamWriter As New StreamWriter(stream)
 
         'loads the wpl content into the playlist
-        playlist = content.GetFromStream(stream)
+        _playlist = _content.GetFromStream(stream)
+
+        Console.WriteLine(_playlist.ItemCount())
 
         'loads the paths from playlist
-        'paths = playlist.GetTracksPaths()
+        _paths = _playlist.GetTracksPaths()
+
+        Dim x As Integer = 0
+        Do
+            CreateMediaPanel()
+            CreateMediaPlayer(_currentMediaPanelName, _paths.Item(x))
+            CreatePlayButton(_currentMediaPanelName)
+            CreateDeleteButton(_currentMediaPanelName)
+            x += 1
+        Loop Until x > _playlist.ItemCount
 
         stream.Close()
         Me.Show()
@@ -65,9 +79,9 @@ Public Class Form1
         'Loop Until x > 50
 
         CreateMediaPanel()
-        CreateMediaPlayer(_CurrentMediaPanelName, "D:\CFP\bumpers\categorical\opening 2010.wav")
-        CreatePlayButton(_CurrentMediaPanelName)
-        CreateDeleteButton(_CurrentMediaPanelName)
+        CreateMediaPlayer(_currentMediaPanelName, "D:\CFP\bumpers\categorical\opening 2010.wav")
+        CreatePlayButton(_currentMediaPanelName)
+        CreateDeleteButton(_currentMediaPanelName)
     End Sub
 
 
@@ -86,15 +100,15 @@ Public Class Form1
         With mediaPanel
             .BackColor = Color.White
             .Size = New Size(256, 144)
-            .Name = "pnlMedia" + (_MediaPanelsAddedCount + 1).ToString
+            .Name = "pnlMedia" + (_mediaPanelsAddedCount + 1).ToString
         End With
 
         'Add panel to flow layout panel
         flpMain.Controls.Add(mediaPanel)
 
         'Update panel variables
-        _CurrentMediaPanelName = mediaPanel.Name
-        _MediaPanelsAddedCount += 1
+        _currentMediaPanelName = mediaPanel.Name
+        _mediaPanelsAddedCount += 1
 
 
     End Sub
@@ -115,7 +129,7 @@ Public Class Form1
         With mediaPlayer
             .URL = mediaPath
             .settings.autoStart = False
-            .Name = "mediaPlayer" + _MediaPanelsAddedCount.ToString
+            .Name = "mediaPlayer" + _mediaPanelsAddedCount.ToString
             '.uiMode = "mini"
             '.Size = New Size(130, 40)
             .Visible = False
@@ -124,11 +138,11 @@ Public Class Form1
         End With
 
         'Loop through controls and add new label to passed panel
-        For Each ControlObject As Control In flpMain.Controls
-            If ControlObject.Name = panelName Then
-                ControlObject.Controls.Add(mediaPlayer)
-            End If
-        Next
+        'For Each ControlObject As Control In flpMain.Controls
+        '    If ControlObject.Name = panelName Then
+        '        ControlObject.Controls.Add(mediaPlayer)
+        '    End If
+        'Next
     End Sub
 
     'Add play button to the flow panel
@@ -141,15 +155,15 @@ Public Class Form1
         With playButton
             .AutoSize = True
             .Location = New Point(60, 60)
-            .Name = "btnPlay" + _MediaPanelsAddedCount.ToString
+            .Name = "btnPlay" + _mediaPanelsAddedCount.ToString
             .Text = "Play"
         End With
 
-        For Each ControlObject As Control In flpMain.Controls
-            If ControlObject.Name = panelName Then
-                ControlObject.Controls.Add(playButton)
-            End If
-        Next
+        'For Each ControlObject As Control In flpMain.Controls
+        '    If ControlObject.Name = panelName Then
+        '        ControlObject.Controls.Add(playButton)
+        '    End If
+        'Next
 
         'Add handler for click events
         'AddHandler playButton.Click AddressOf DynamicPlayButton_Click
@@ -166,7 +180,7 @@ Public Class Form1
         With deleteButton
             .AutoSize = True
             .Location = New Point(120, 60)
-            .Name = "btnDelete" + _MediaPanelsAddedCount.ToString
+            .Name = "btnDelete" + _mediaPanelsAddedCount.ToString
             .Text = "Delete"
         End With
 
@@ -219,7 +233,7 @@ Public Class Form1
     End Sub
 
     Private Sub ReadPlaylistToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReadPlaylistToolStripMenuItem.Click
-        GetFromStream_ReadPlaylistAndCompareWithObject_Equal()
+
     End Sub
 End Class
 
