@@ -51,3 +51,5 @@ C:\Users\David Sweeney\source\repos\windows-show-player\obj\Debug\windows-show-p
 C:\Users\David Sweeney\source\repos\windows-show-player\obj\Debug\windows-show-player.xml
 C:\Users\David Sweeney\source\repos\windows-show-player\obj\Debug\windows-show-player.pdb
 C:\Users\David Sweeney\source\repos\windows-show-player\obj\Debug\windows-show-player.vbproj.AssemblyReference.cache
+D:\code\DotNet\windows-show-player\bin\Debug\PlaylistsNET.dll
+D:\code\DotNet\windows-show-player\obj\Debug\windows-show-player.vbproj.CopyComplete

@@ -31,6 +31,9 @@ Public Class Form1
     'Indicates current media panel to add controls to
     Private _currentMediaPanelName As String = Nothing
 
+    'Indicates current media player to add controls to
+    Private _currentMediaPlayerName As String = Nothing
+
     'Used to give unique control names such as label1, label2, etc.
     Private _mediaPanelsAddedCount As Integer = 0
 
@@ -55,7 +58,7 @@ Public Class Form1
             CreatePlayButton(_currentMediaPanelName)
             CreateDeleteButton(_currentMediaPanelName)
             x += 1
-        Loop Until x > _playlist.ItemCount
+        Loop Until x > _paths.Count - 1
 
         stream.Close()
         Me.Show()
@@ -80,7 +83,7 @@ Public Class Form1
 
         CreateMediaPanel()
         CreateMediaPlayer(_currentMediaPanelName, "D:\CFP\bumpers\categorical\opening 2010.wav")
-        CreatePlayButton(_currentMediaPanelName)
+        CreatePlayButton(_currentMediaPanelName, _currentMediaPlayerName)
         CreateDeleteButton(_currentMediaPanelName)
     End Sub
 
@@ -137,16 +140,20 @@ Public Class Form1
             .Ctlcontrols.stop()
         End With
 
-        'Loop through controls and add new label to passed panel
-        'For Each ControlObject As Control In flpMain.Controls
-        '    If ControlObject.Name = panelName Then
-        '        ControlObject.Controls.Add(mediaPlayer)
-        '    End If
-        'Next
+        Loop through controls And add New label to passed panel
+        For Each ControlObject As Control In flpMain.Controls
+            If ControlObject.Name = panelName Then
+                ControlObject.Controls.Add(mediaPlayer)
+            End If
+        Next
+
+        'Update mediaplayer variable
+        _currentMediaPlayerName = mediaPlayer.Name
+
     End Sub
 
     'Add play button to the flow panel
-    Public Sub CreatePlayButton(ByVal panelName As String)
+    Public Sub CreatePlayButton(ByVal panelName As String, ByVal playerName As String)
 
         Dim playButton As Button
         playButton = New Button
@@ -159,14 +166,14 @@ Public Class Form1
             .Text = "Play"
         End With
 
-        'For Each ControlObject As Control In flpMain.Controls
-        '    If ControlObject.Name = panelName Then
-        '        ControlObject.Controls.Add(playButton)
-        '    End If
-        'Next
+        For Each ControlObject As Control In flpMain.Controls
+            If ControlObject.Name = panelName Then
+                ControlObject.Controls.Add(playButton)
+            End If
+        Next
 
         'Add handler for click events
-        'AddHandler playButton.Click AddressOf DynamicPlayButton_Click
+        AddHandler playButton.Click, AddressOf DynamicPlayButton_Click
 
     End Sub
 
