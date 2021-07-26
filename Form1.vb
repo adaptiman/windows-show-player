@@ -11,12 +11,11 @@ Public Class Form1
 
     Private Sub Create_Cue()
 
+        'CreateMediaPanel()
+        ''CreateMediaPlayer(_CurrentMediaPanelName, "D:\CFP\bumpers\categorical\opening 2010.wav")
 
-        CreateMediaPanel()
-        'CreateMediaPlayer(_CurrentMediaPanelName, "D:\CFP\bumpers\categorical\opening 2010.wav")
-
-        CreatePlayButton(_currentMediaPanelName)
-        CreateDeleteButton(_currentMediaPanelName)
+        'CreatePlayButton(_currentMediaPanelName)
+        'CreateDeleteButton(_currentMediaPanelName)
 
     End Sub
 
@@ -55,7 +54,7 @@ Public Class Form1
         Do
             CreateMediaPanel()
             CreateMediaPlayer(_currentMediaPanelName, _paths.Item(x))
-            CreatePlayButton(_currentMediaPanelName)
+            CreatePlayButton(_currentMediaPanelName, _currentMediaPlayerName)
             CreateDeleteButton(_currentMediaPanelName)
             x += 1
         Loop Until x > _paths.Count - 1
@@ -133,14 +132,14 @@ Public Class Form1
             .URL = mediaPath
             .settings.autoStart = False
             .Name = "mediaPlayer" + _mediaPanelsAddedCount.ToString
-            '.uiMode = "mini"
-            '.Size = New Size(130, 40)
-            .Visible = False
+            .uiMode = "full"
+            .Size = New Size(230, 240)
+            .Visible = True
             '.Dock = DockStyle.Bottom
             .Ctlcontrols.stop()
         End With
 
-        Loop through controls And add New label to passed panel
+        'Loop through controls And add New label to passed panel
         For Each ControlObject As Control In flpMain.Controls
             If ControlObject.Name = panelName Then
                 ControlObject.Controls.Add(mediaPlayer)
@@ -210,6 +209,16 @@ Public Class Form1
         Dim parentPanelName As String
         parentPanelName = Nothing
 
+        'Identify the parentPanel where the button was clicked
+        For Each controlObj As Control In flpMain.Controls
+            For Each childControlObj As Control In controlObj.Controls
+                If childControlObj.Name = sender.name Then
+                    parentPanelName = childControlObj.Parent.Name
+                End If
+            Next
+        Next
+
+        'Play the associated player file
 
     End Sub
 
